@@ -1,25 +1,19 @@
-define(['durandal/app','jquery.fileupload-image'], function (app,fileUpload) {
+define(['durandal/app', 'jquery.fileupload-image', 'knockout'], function (app, fileUpload, ko) {
     var ctor = function () {
-        this.displayName = 'File Upload';
-        this.attached= function () {
-            $('#fileUploadInput').fileupload({
-                
-                dataType: 'json',
-                autoUpload: false,
-                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-                maxFileSize: 999000,
-                // Enable image resizing, except for Android and Opera,
-                // which actually support image resizing, but fail to
-                // send Blob objects via XHR requests:
-                disableImageResize: /Android(?!.*Chrome)|Opera/
-                    .test(window.navigator.userAgent),
-                previewMaxWidth: 100,
-                previewMaxHeight: 100,
-                previewCrop: true
-            })
+        var self = this;
+        self.displayName = 'File Upload';
+        self.fileDetails = ko.observableArray([]);
+        self.afterFileProcessedCallBack = (data) => {
+            data.files.forEach((item) => {
+                self.fileDetails.push({
+                    name: item.name,
+                    preview: item.preview
+                });
+            });
+
         };
     };
-    
+
 
     //Note: This module exports a function. That means that you, the developer, can create multiple instances.
     //This pattern is also recognized by Durandal so that it can create instances on demand.

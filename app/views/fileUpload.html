@@ -1,6 +1,21 @@
 <section>
     <h2 data-bind="text:displayName"></h2>
-    <blockquote >Knockout file upload integtration</blockquote>
-    <input id="fileUploadInput" type="file" name="files[]" multiple>
-    
+    <blockquote>Knockout file upload integtration</blockquote>
+
+
+    <file-upload params="afterFileProcessedCallBack:afterFileProcessedCallBack,viewModel:$root"></file-upload>
+
+    <div>
+        <table data-bind="foreach:{data:fileDetails,as:'file'}">
+
+            <tr>
+                <td data-bind="renderPreview:file.preview">
+
+                </td>
+                <td data-bind="text:file.name">
+
+                </td>
+            </tr>
+        </table>
+    </div>
 </section>

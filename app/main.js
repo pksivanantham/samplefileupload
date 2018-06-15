@@ -11,13 +11,14 @@
         'jquery.fileupload': '../lib/jquery-file-upload/jquery.fileupload',
         'jquery.fileupload-validate': '../lib/jquery-file-upload/jquery.fileupload-validate',
         'jquery.fileupload-process': '../lib/jquery-file-upload/jquery.fileupload-process',
-        'jquery.fileupload-image': '../lib/jquery-file-upload/jquery.fileupload-image',
-        // 'jquery.load-image': '../lib/jquery-file-upload/load-image.all.min',
+        'jquery.fileupload-image': '../lib/jquery-file-upload/jquery.fileupload-image',        
         'load-image': '../lib/JavaScript-Load-Image/load-image',
         'load-image-meta': '../lib/JavaScript-Load-Image/load-image-meta',
         'load-image-scale': '../lib/JavaScript-Load-Image/load-image-scale',
         'load-image-exif': '../lib/JavaScript-Load-Image/load-image-exif',
-        'canvas-to-blob':'../lib/JavaScript-Canvas-to-Blob/canvas-to-blob.min'
+        'canvas-to-blob':'../lib/JavaScript-Canvas-to-Blob/canvas-to-blob.min',
+        'components':'../app/components/components',
+        'customBinders':'../app/components/customBinders'                
     },
     shim: {
         'bootstrap': {
@@ -27,7 +28,13 @@
     }
 });
 
-define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'],  
+define(['durandal/system',
+'durandal/app', 
+'durandal/viewLocator', 
+'bootstrap',
+'knockout',
+'components',
+'customBinders'],  
 function (system, app, viewLocator,bootstrap,jqueryUI) {
     //>>excludeStart("build", true);
     system.debug(true);
